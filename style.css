@@ -1,26 +1,28 @@
 :root {
+    --color-button-hover: #e55720;
+    --color-button: #fe652b;
+    --color-error: #e55720;
+    --color-primary-darker: #1d39c2;
     --color-primary: #4B69FD;
     --color-secondary: #FFF9EB;
     --color-tertiary: #C4C4C4;
-    --color-button: #fe652b;
-    --color-button-hover: #e55720;
     --color-text: #444444;
     --color-white: #FFFFFF;
 }
 
 /* Estilos generales */
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
-    height: 100vh;
+    align-items: center;
     background-color: var(--color-primary);
     display: flex;
+    height: 100vh;
     justify-content: center;
-    align-items: center;
 }
 
 .main-content {
@@ -32,40 +34,40 @@ body {
 
 /* Banner */
 .header-banner {
-    flex: 40%;
-    display: flex;
-    justify-content: center;
     align-items: center;
+    display: flex;
+    flex: 40%;
+    justify-content: center;
     padding: 40px 0 0;
 }
 
 /* Sección de entrada */
 .input-section {
-    flex: 60%;
+    align-items: center;
     background-color: var(--color-secondary);
-    border: 1px solid #000;
     border-radius: 64px 64px 0 0;
+    border: 1px solid #000;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    flex: 60%;
     padding: 20px;
     width: 100%;
 }
 
 /* Títulos */
 .main-title {
-    font-size: 48px;
-    font-family: "Merriweather", serif;
-    font-weight: 900;
-    font-style: italic;
     color: var(--color-white);
+    font-family: "Merriweather", serif;
+    font-size: 48px;
+    font-style: italic;
+    font-weight: 900;
 }
 
 .section-title {
+    color: var(--color-primary);
     font-family: "Inter", serif;
     font-size: 36px;
     font-weight: 700;
-    color: var(--color-primary);
     margin: 10px 0;
     text-align: center;
 }
@@ -74,83 +76,91 @@ body {
 .input-wrapper {
     display: flex;
     justify-content: center;
-    width: 100%;
-    max-width: 600px;
     margin-top: 20px;
+    max-width: 600px;
+    width: 100%;
 }
 
 .input-name {
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #000;
     border-radius: 25px 0 0 25px;
+    border: 2px solid #000;
     font-size: 16px;
+    padding: 10px;
+    width: 100%;
+}
+
+.input-name.error::placeholder {
+    color: var(--color-error);
+}
+
+.input-name.error {
+    border-color: var(--color-error);
 }
 
 .button-container {
-    width: 300px;
     justify-content: center;
+    width: 300px;
 }
 
 /* Estilos de entrada de texto */
 .input-title {
-    flex: 1;
-    padding: 10px 15px;
-    font-size: 16px;
-    border: 2px solid #333;
-    border-right: none;
     border-radius: 25px 0 0 25px;
-    font-family: "Merriweather", serif;
+    border-right: none;
+    border: 2px solid #333;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    flex: 1;
+    font-family: "Merriweather", serif;
+    font-size: 16px;
+    padding: 10px 15px;
 }
 
 /* Estilos de botón */
 button {
-    padding: 15px 30px;
-    font-family: "Inter", sans-serif;
-    font-size: 16px;
-    border: 2px solid #000;
     border-radius: 25px;
+    border: 2px solid #000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     cursor: pointer;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    padding: 15px 30px;
 }
 
 .button-add {
-    background-color: var(--color-tertiary);
-    color: var(--color-text);
+    background-color: var(--color-primary);
     border-radius: 0 25px 25px 0;
+    color: var(--color-white);
 }
 
 .button-add:hover {
-    background-color: #a1a1a1;
+    background-color: var(--color-primary-darker);
 }
 
 /* Listas */
 ul {
-    list-style-type: none;
     color: var(--color-text);
     font-family: "Inter", sans-serif;
     font-size: 18px;
+    list-style-type: none;
     margin: 20px 0;
 }
 
 .result-list {
-    margin-top: 15px;
-    color: #05DF05;
+    color: #333;
     font-size: 22px;
     font-weight: bold;
+    margin-top: 15px;
     text-align: center;
 }
 
 /* Botón de sortear título */
 .button-draw {
-    display: flex;
     align-items: center;
-    width: 100%;
-    padding: 10px 40px;
-    color: var(--color-white);
     background-color: var(--color-button);
+    color: var(--color-white);
+    display: flex;
     font-size: 16px;
+    padding: 10px 40px;
+    width: 100%;
 }
 
 .button-draw img {
@@ -159,4 +169,66 @@ ul {
 
 .button-draw:hover {
     background-color: var(--color-button-hover);
+}
+
+/* Lista de amigos */
+li.friend-list {
+    background: #f9e4b4;
+    border-radius: 12px;
+    margin: 8px 0;
+    min-width: 200px;
+    padding: 8px 16px;
+    text-align: center;
+}
+
+
+/* Modal */
+section#modal-overlay.enabled {
+    background: rgba(0, 0, 0, 0.3);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+div#modal.enabled {
+    background: #f0e6d2;
+    border-radius: 25px;
+    height: 500px;
+    margin: 25vh auto;
+    width: 500px;
+}
+
+button#modal-boton.enabled {
+    display: inline-block;
+}
+
+section#modal-overlay.disabled {
+    display: none;
+}
+
+div#modal.disabled {
+    display: none;
+}
+
+button#modal-boton.disabled {
+    display: none;
+}
+
+div.modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 16px;
+}
+
+button#modal-boton {}
+
+ul>p {
+    color: #333;
+    font-size: 24px;
+}
+
+p>strong {
+    color: #333;
+    font-size: 64px;
 }
