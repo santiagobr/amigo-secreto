@@ -19,28 +19,34 @@
         
         <section class="input-section">
             <h2 class="section-title">Digite el nombre de sus amigos</h2>
-            <div class="input-wrapper">
-                <input type="text" id="amigo" class="input-name" placeholder="Escribe un nombre">
-                <button class="button-add" onclick="AgregarAmigo()">Añadir</button>
-            </div>
-           
-            <ul id="listaAmigos" class="name-list" aria-labelledby="listaAmigos" role="list"></ul>
+            <div class="container-flex">
+                <div class="container-wrapper">
+                    <div class="input-wrapper">
+                        <input type="text" id="amigo" class="input-name" placeholder="Escribe un nombre">
+                        <button class="button-add" onclick="AgregarAmigo()">Añadir</button>
+                    </div>
+                    <div class="button-container">
+                        <button class="button-draw" onclick="SortearAmigo()" aria-label="Sortear amigo secreto">
+                            <img src="assets/play_circle_outline.png" alt="Ícono para sortear">
+                            Sortear amigo
+                        </button>
+                        <button class=" button-reset" onclick="ReiniciarSorteo()" aria-label="Reiniciar sorteo">
+                            <img src="assets/reiniciar.svg" alt="Ícono para reiniciar">
+                            Reiniciar sorteo
+                        </button>
+                    </div>
+                </div>
 
-            <div class="button-container">
-                <button class="button-draw" onclick="SortearAmigo()" aria-label="Sortear amigo secreto">
-                    <img src="assets/play_circle_outline.png" alt="Ícono para sortear">
-                    Sortear amigo
-                </button>
+                <ul id="listaAmigos" class="name-list" aria-labelledby="listaAmigos" role="list"></ul>
             </div>
-        </section>
-        
+        </section>        
     </main>
-    <section class="modal-overlay" id="modal-overlay">
-        <div class="modal" id="modal">
-            <ul id="resultado" class="result-list" aria-live="polite"></ul>
-            <button type="button" id="modal-boton" class="disabled" onclick="CerrarModal()">Continuar</button>
-        </div>
+    <section class="modal-overlay" id="modal-overlay" onclick="CerrarModal()">
     </section>
+    <div class="modal" id="modal">
+        <ul id="resultado" class="result-list" aria-live="polite"></ul>
+        <button type="button" class="modal-boton" id="modal-boton" onclick="CerrarModal()">Continuar</button>
+    </div>
 
     <script src="app.js" defer></script>
 </body>

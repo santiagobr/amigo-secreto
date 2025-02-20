@@ -1,13 +1,15 @@
 :root {
-    --color-button-hover: #e55720;
-    --color-button: #fe652b;
-    --color-error: #e55720;
-    --color-primary-darker: #1d39c2;
-    --color-primary: #4B69FD;
+    --color-button-hover: #0b4232;
+    --color-button: #1B4D3E;
+    --color-error: #c7502f;
+    --color-primary-darker: #690B22;
+    --color-primary: #E07A5F;
     --color-secondary: #FFF9EB;
     --color-tertiary: #C4C4C4;
+    --color-tertiary-darker: #a1a1a1;
     --color-text: #444444;
     --color-white: #FFFFFF;
+    --color-background: #F1E3D3;
 }
 
 /* Estilos generales */
@@ -51,6 +53,23 @@ body {
     flex-direction: column;
     flex: 60%;
     padding: 20px;
+    width: 100%;
+}
+
+.container-flex {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 40px;
+}
+
+.container-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+    max-width: 600px;
     width: 100%;
 }
 
@@ -98,8 +117,11 @@ body {
 }
 
 .button-container {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
     justify-content: center;
-    width: 300px;
+    max-width: 500px;
 }
 
 /* Estilos de entrada de texto */
@@ -136,12 +158,16 @@ button {
 }
 
 /* Listas */
-ul {
+ul.name-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     color: var(--color-text);
     font-family: "Inter", sans-serif;
     font-size: 18px;
     list-style-type: none;
     margin: 20px 0;
+    gap: 24px;
 }
 
 .result-list {
@@ -160,7 +186,6 @@ ul {
     display: flex;
     font-size: 16px;
     padding: 10px 40px;
-    width: 100%;
 }
 
 .button-draw img {
@@ -171,8 +196,23 @@ ul {
     background-color: var(--color-button-hover);
 }
 
+.button-reset {
+    display: flex;
+    background-color: var(--color-tertiary);
+}
+
+.button-reset:hover {
+    background-color: var(--color-tertiary-darker);
+}
+
+.button-reset img {
+    width: 35px;
+}
+
 /* Lista de amigos */
 li.friend-list {
+    display: flex;
+    justify-content: space-between;
     background: #f9e4b4;
     border-radius: 12px;
     margin: 8px 0;
@@ -181,47 +221,39 @@ li.friend-list {
     text-align: center;
 }
 
+li.friend-list img {
+    height: 25px;
+    width: 25px;
+}
+
 
 /* Modal */
-section#modal-overlay.enabled {
+section.modal-overlay {
+    display: none;
     background: rgba(0, 0, 0, 0.3);
     height: 100%;
     position: absolute;
     width: 100%;
 }
-
-div#modal.enabled {
+div.modal {
+    display: flex;
+    position: absolute;
     background: #f0e6d2;
     border-radius: 25px;
     height: 500px;
     margin: 25vh auto;
     width: 500px;
 }
-
-button#modal-boton.enabled {
-    display: inline-block;
-}
-
-section#modal-overlay.disabled {
-    display: none;
-}
-
-div#modal.disabled {
-    display: none;
-}
-
-button#modal-boton.disabled {
+button.modal-boton {
     display: none;
 }
 
 div.modal {
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: space-around;
     padding: 16px;
 }
-
-button#modal-boton {}
 
 ul>p {
     color: #333;
