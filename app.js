@@ -57,7 +57,11 @@ const ActualizarListadoAmigos = () => {
     listaAmigos.push(inputAmigos.value)
   }
 
-  /* debugger */
+  if (listaAmigos.length > 0) {
+    elementoListadoAmigos.style.width = '525px'
+  } else {
+    elementoListadoAmigos.style.width = '0'
+  }
   elementoListadoAmigos.innerHTML = ''
 
   listaAmigos.map((amigo, index) => {
@@ -69,10 +73,20 @@ const ActualizarListadoAmigos = () => {
 
     elementoListadoAmigos.appendChild(list)
     list.classList.add('friend-list')
-    list.innerHTML = `${amigo}`
+
+    list.innerHTML = `${amigo} <img src='assets/basura.svg' class='delete' onclick='EliminarAmigo(${index})'>`
   })
   inputAmigos.focus()
   LimpiarElemento(inputAmigos)
+}
+
+/**
+ * 
+ * @param {Integer} index 
+ */
+const EliminarAmigo = (index) => {
+  listaAmigos.splice(index, 1)
+  ActualizarListadoAmigos()
 }
 
 /**
@@ -93,36 +107,35 @@ const AlternarEstadoElemento = (elemento) => {
   elemento.toggleAttribute('disabled')
 }
 
-const AlternarListaClases = (elemento) => {
-  if (elemento.classList.contains('disabled')) {
-    elemento.classList.remove('disabled')
-    elemento.classList.add('enabled')
-  } else if (elemento.classList.contains('enabled')) {
-    elemento.classList.remove('enabled')
-    elemento.classList.add('disabled')
-  } else {
-    elemento.classList.remove('disabled')
-    elemento.classList.add('enabled')
-  }
-}
-
+/**
+ * 
+ * @param {HTMLElement} contenido 
+ * @param {Object} properties 
+ * @returns 
+ */
 const AbrirModal = (contenido, properties) => {
   let { amigoElegido } = properties
-  AlternarListaClases(elementoModalOverlay)
-  AlternarListaClases(elementoModal)
-  AlternarListaClases(elementoModalBoton)
+  //debugger
+  console.log('abrir modal')
+  elementoModalOverlay.style.display = 'block'
+  elementoModal.style.display = 'flex'
+  elementoModalBoton.style.display = 'block'
 
   contenido.innerHTML = `<p class='modal-text'>Tu amigo secreto es: <br/> <strong>${amigoElegido}</strong></p>`
   return
 }
 
 const CerrarModal = () => {
-  AlternarListaClases(elementoModalOverlay)
-  AlternarListaClases(elementoModal)
-  AlternarListaClases(elementoModalBoton)
+  //debugger
+  console.log('cerrar modal')
+  elementoModalOverlay.style.display = 'none'
+  elementoModal.style.display = 'none'
+  elementoModalBoton.style.display = 'none'
   return
 }
 
-CerrarModal()
-
-elementoModal.addEventListener('touchstart', CerrarModal())
+const ReiniciarSorteo = () => {
+  listaAmigos = []
+  ActualizarListadoAmigos()
+  elementoResultadoSorteo.innerHTML = ''
+}
